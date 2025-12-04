@@ -1,3 +1,4 @@
+#pragma once
 
 class Rational {
 public:
@@ -8,13 +9,7 @@ public:
 	Rational squareValue() const;
 	bool dividedBy(const Rational& divisor) const;
 
-	Rational operator+=(const Rational& other);
 
-	Rational operator-=(const Rational& other);
-
-	Rational operator*=(const Rational& other);
-
-	Rational operator/=(const Rational& other);
 
 private:
 	int m_numerator;
@@ -25,10 +20,20 @@ private:
 	int gcd() const;
 };
 
-Rational operator+(const Rational& a, const Rational& b);
+Rational& operator+=(Rational& left, const Rational& right);
 
-Rational operator-(const Rational& a, const Rational& b);
+Rational& operator-=(Rational& left, const Rational& right);
 
-Rational operator*(const Rational& a, const Rational& b);
+Rational& operator*=(Rational& left, const Rational& right);
 
-Rational operator/(const Rational& a, const Rational& b);
+Rational& operator/=(Rational& left, const Rational& right);
+
+Rational operator+(const Rational& left, const Rational& right);
+Rational operator+(const Rational& a);
+
+Rational operator-(const Rational& left, const Rational& right);
+Rational operator-(const Rational& a);
+
+Rational operator*(const Rational& left, const Rational& right);
+
+Rational operator/(const Rational& left, const Rational& right);

@@ -7,13 +7,13 @@ Rational::Rational(int numerator, int denominator) {
 	makeValid();
 }
 
-int Rational::numerator() const { return m_numerator }
+int Rational::numerator() const { return m_numerator; }
 
-int Rational::denominator() const { return m_denominator }
+int Rational::denominator() const { return m_denominator; }
 
-Rational Rational::absValue() const { return Rational(std::abs(m_numerator), m_denominator) }
+Rational Rational::absValue() const { return Rational(std::abs(m_numerator), m_denominator); }
 
-Rational Rational::squareValue() const { return Rational(m_numerator * m_numerator, m_denominator * m_denominator) }
+Rational Rational::squareValue() const { return Rational(m_numerator * m_numerator, m_denominator * m_denominator); }
 
 bool Rational::dividedBy(const Rational& divisor) {
 	temp Rational(m_numerator * divisor.m_denominator, m_denominator * divisor.m_numerator);
@@ -47,3 +47,45 @@ void Rational::properSign() {
     }
 }
 
+void Rational::makeValid() {
+    properSign();
+    reduceFraction();
+}
+
+Rational& operator+=(Rational& left, const Rational& right)
+{
+    left = (left + right);
+}
+
+Rational& operator-=(Rational& left, const Rational& right)
+{
+    left = (left - right);
+}
+
+Rational& operator*=(Rational& left, const Rational& right)
+{
+    left = (left * right);
+}
+
+Rational& operator/=(Rational& left, const Rational& right)
+{
+    left = (left / right);
+}
+
+Rational operator+(const Rational& a, const Rational& b)
+{
+    return Rational(
+        a.numerator()*b.denominator() + b.numerator()*b.denominator(), 
+        a.denominator()*b.denominator()
+    );
+}
+
+Rational operator-(const Rational& a, const Rational& b) { return a + (-b); }
+
+Rational operator*(const Rational& a, const Rational& b) { return Rational(a.numerator() * b.numerator(), a.denominator() * b.denominator()); }
+
+Rational operator/(const Rational& a, const Rational& b) { return a * Rational(b.denominator(), b.numerator()); }
+
+Rational operator+(const Rational& a) { return a; }
+
+Rational operator-(const Rational& a) { return Rational(-a.numerator(), a.denominator()); }
