@@ -1,7 +1,7 @@
-#include <RationalArray.h>
+#include "RationalArray.h"
+#include "Rational.h"
 
-//#include "Rational.h"
-RationalArray::RationalArray(int size, Rational& defultValue) 
+RationalArray::RationalArray(int size, Rational& defaultValue) 
     : m_size(size), m_data(nullptr)
 {
     if (size <= 0) return;
@@ -9,7 +9,7 @@ RationalArray::RationalArray(int size, Rational& defultValue)
     m_data = new Rational[size];
 
     for (int i = 0; i < m_size; i++)
-        m_data[i] = defultValue;
+        m_data[i] = defaultValue;
 }
 
 RationalArray::RationalArray(Rational values[], int size)
