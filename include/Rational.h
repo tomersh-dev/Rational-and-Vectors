@@ -17,7 +17,7 @@ private:
 	void reduceFraction();
 	void properSign();
 	void makeValid();
-	int gcd() const;
+	int findGCD() const;
 };
 
 Rational& operator+=(Rational& left, const Rational& right);
@@ -37,3 +37,7 @@ Rational operator-(const Rational& a);
 Rational operator*(const Rational& left, const Rational& right);
 
 Rational operator/(const Rational& left, const Rational& right);
+
+bool operator==(const Rational& left, const Rational& right);
+
+bool operator!=(const Rational& left, const Rational& right);

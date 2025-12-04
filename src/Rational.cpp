@@ -15,12 +15,12 @@ Rational Rational::absValue() const { return Rational(std::abs(m_numerator), m_d
 
 Rational Rational::squareValue() const { return Rational(m_numerator * m_numerator, m_denominator * m_denominator); }
 
-bool Rational::dividedBy(const Rational& divisor) {
-	temp Rational(m_numerator * divisor.m_denominator, m_denominator * divisor.m_numerator);
+bool Rational::dividedBy(const Rational& divisor) const {
+	Rational temp(m_numerator * divisor.m_denominator, m_denominator * divisor.m_numerator);
 	return (temp.m_denominator == 1);
 }
 
-int Rational::gcd() const {
+int Rational::findGCD() const {
 
     int a = std::abs(m_numerator);
     int b = m_denominator;
@@ -35,7 +35,7 @@ int Rational::gcd() const {
 }
 
 void Rational::reduceFraction() {
-    int gcd = gcd();
+    int gcd = findGCD();
     m_numerator /= gcd;
     m_denominator /= gcd;
 }
@@ -55,21 +55,25 @@ void Rational::makeValid() {
 Rational& operator+=(Rational& left, const Rational& right)
 {
     left = (left + right);
+    return left;
 }
 
 Rational& operator-=(Rational& left, const Rational& right)
 {
     left = (left - right);
+    return left;
 }
 
 Rational& operator*=(Rational& left, const Rational& right)
 {
     left = (left * right);
+    return left;
 }
 
 Rational& operator/=(Rational& left, const Rational& right)
 {
     left = (left / right);
+    return left;
 }
 
 Rational operator+(const Rational& a, const Rational& b)
@@ -89,3 +93,13 @@ Rational operator/(const Rational& a, const Rational& b) { return a * Rational(b
 Rational operator+(const Rational& a) { return a; }
 
 Rational operator-(const Rational& a) { return Rational(-a.numerator(), a.denominator()); }
+
+bool operator==(const Rational& left, const Rational& right)
+{
+    return left.numerator() == right.numerator() && left.denominator() == right.numerator();
+}
+
+bool operator!=(const Rational& left, const Rational& right)
+{
+    return !(left == right);
+}

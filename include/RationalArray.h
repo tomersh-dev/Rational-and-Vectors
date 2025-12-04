@@ -1,9 +1,9 @@
 #pragma once
-
+#include "Rational.h"
 class RationalArray
 {
 public:
-    explicit RationalArray(int size = 0, Rational& defaultValue = Rational());
+    explicit RationalArray(int size = 0, const Rational& defaultValue = Rational());
     explicit RationalArray(Rational defaultValue[], int size = 0);
     RationalArray(const RationalArray& other);
     ~RationalArray();

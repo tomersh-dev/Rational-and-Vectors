@@ -1,7 +1,7 @@
 #include "RationalArray.h"
 #include "Rational.h"
 
-RationalArray::RationalArray(int size, Rational& defaultValue) 
+RationalArray::RationalArray(int size, const Rational& defaultValue)
     : m_size(size), m_data(nullptr)
 {
     if (size <= 0) return;
@@ -36,7 +36,7 @@ int RationalArray::size() const
     return m_size;
 }
 
-bool RationalArray::empty() const;
+bool RationalArray::empty() const
 {
     return m_size == 0;
 }
