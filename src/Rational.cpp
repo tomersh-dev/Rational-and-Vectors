@@ -79,7 +79,7 @@ Rational& operator/=(Rational& left, const Rational& right)
 Rational operator+(const Rational& a, const Rational& b)
 {
     return Rational(
-        a.numerator()*b.denominator() + b.numerator()*b.denominator(), 
+        a.numerator()*b.denominator() + b.numerator()*a.denominator(),
         a.denominator()*b.denominator()
     );
 }
@@ -96,10 +96,16 @@ Rational operator-(const Rational& a) { return Rational(-a.numerator(), a.denomi
 
 bool operator==(const Rational& left, const Rational& right)
 {
-    return left.numerator() == right.numerator() && left.denominator() == right.numerator();
+    return left.numerator() == right.numerator() && left.denominator() == right.denominator();
 }
 
 bool operator!=(const Rational& left, const Rational& right)
 {
     return !(left == right);
+}
+
+std::ostream& operator<<(std::ostream& streem, const Rational& out)
+{
+    streem << out.numerator() << '\\' << out.denominator();
+    return streem;
 }

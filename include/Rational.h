@@ -1,5 +1,5 @@
 #pragma once
-
+#include <ostream>
 class Rational {
 public:
 	Rational(int nummerator = 0, int denominator = 1);
@@ -19,6 +19,8 @@ private:
 	void makeValid();
 	int findGCD() const;
 };
+
+std::ostream& operator<<(std::ostream& streem, const Rational& out);
 
 Rational& operator+=(Rational& left, const Rational& right);
 

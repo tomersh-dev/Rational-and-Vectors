@@ -37,7 +37,7 @@ TEST_CASE("Deep copy semantics", "[Vector]")
 
     REQUIRE(v1 == v2);
 
-    // Modify v1 – ensure v2 does not change
+    // Modify v1 ï¿½ ensure v2 does not change
     v1[0] = Rational(5, 1);
 
     REQUIRE(v1[0] == Rational(5, 1));

@@ -51,6 +51,8 @@ RationalArray& RationalArray::operator=(const RationalArray& other)
     m_size = newArray.m_size;
 
     newArray.m_data = nullptr;
+
+    return *this;
 }
 
 const Rational RationalArray::operator[](int index) const
@@ -79,6 +81,7 @@ RationalArray operator+(const RationalArray& a, const RationalArray& b)
 
 bool operator==(const RationalArray& a, const RationalArray& b)
 {
+    
     if (a.size() != b.size()) return false;
 
     for (int i = 0; i < a.size(); i++)
