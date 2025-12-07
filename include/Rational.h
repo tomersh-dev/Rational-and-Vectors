@@ -45,3 +45,11 @@ Rational operator/(const Rational& left, const Rational& right);
 bool operator==(const Rational& left, const Rational& right);
 
 bool operator!=(const Rational& left, const Rational& right);
+
+bool operator>(const Rational& left, const Rational& right);
+
+bool operator<(const Rational& left, const Rational& right);
+
+bool operator>=(const Rational& left, const Rational& right);
+
+bool operator<=(const Rational& left, const Rational& right);

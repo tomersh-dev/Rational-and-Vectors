@@ -106,6 +106,26 @@ bool operator!=(const Rational& left, const Rational& right)
 
 std::ostream& operator<<(std::ostream& streem, const Rational& out)
 {
-    streem << out.numerator() << '\\' << out.denominator();
+    streem << out.numerator() << '/' << out.denominator();
     return streem;
+}
+
+bool operator>(const Rational& left, const Rational& right)
+{
+    return left.numerator() * right.denominator() > right.numerator() * left.denominator();
+}
+
+bool operator<(const Rational& left, const Rational& right)
+{
+	return left.numerator() * right.denominator() < right.numerator() * left.denominator();
+}
+
+bool operator>=(const Rational& left, const Rational& right)
+{
+    return !(left < right);
+}
+
+bool operator<=(const Rational& left, const Rational& right)
+{
+    return !(left > right);
 }

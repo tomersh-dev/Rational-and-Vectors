@@ -67,12 +67,12 @@ Vector& operator*=(Vector& left, const Vector& right)
 Vector operator+(const Vector& left, const Vector& right)
 {
 	int maxSize = std::max(left.dimension(), right.dimension());
-	auto res = Vector(maxSize);
+	auto result = Vector(maxSize);
 	for	(int i = 0; i < maxSize;i++)
 	{
-		res[i] = (i > left.dimension() ? Rational() : left[i]) + (i > right.dimension() ? Rational() : right[i]);
+		result[i] = (i > left.dimension() ? Rational() : left[i]) + (i > right.dimension() ? Rational() : right[i]);
 	}
-	return res;
+	return result;
 }
 
 Vector operator-(const Vector& left, const Vector& right)
@@ -83,25 +83,32 @@ Vector operator-(const Vector& left, const Vector& right)
 Vector operator*(const Vector& left, const Vector& right)
 {
 	int maxSize = std::max(left.dimension(), right.dimension());
-	auto res = Vector(maxSize);
+	auto result = Vector(maxSize);
 	for (int i = 0; i < maxSize; i++)
 	{
-		res[i] = (i > left.dimension() ? Rational() : left[i]) * (i > right.dimension() ? Rational() : right[i]);
+		result[i] = (i > left.dimension() ? Rational() : left[i]) * (i > right.dimension() ? Rational() : right[i]);
 	}
-	return res;
+	return result;
 }
 
-Vector operator*(double scalar, const Vector& vect)
+Vector operator*(Rational scalar, const Vector& vect)
 {
 	return vect * scalar;
 }
 
-Vector operator*(const Vector& vect, double scalar)
+Vector operator*(const Vector& vect, Rational scalar)
 {
-	auto res = Vector(vect);
-	for (int i = 0; i < res.dimension(); i++)
-		res[i] *= scalar;
-	return res;
+	auto result = Vector(vect);
+	for (int i = 0; i < result.dimension(); i++)
+		result[i] *= scalar;
+	return result;
+}
+
+Vector& operator*=(Vector& vect, Rational scalar)
+{
+	for (int i = 0; i < vect.dimension(); i++)
+		vect[i] *= scalar;
+	return vect;
 }
 
 bool operator!=(const Vector& left, const Vector& right)

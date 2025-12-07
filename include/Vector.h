@@ -20,8 +20,6 @@ private:
 	RationalArray m_data;
 };
 
-
-
 std::ostream& operator<<(std::ostream& streem, const Vector& out);
 
 Vector& operator+=(Vector& left, const Vector& right);
@@ -36,12 +34,14 @@ Vector operator-(const Vector& left, const Vector& right);
 
 Vector operator*(const Vector& left, const Vector& right);
 
-Vector operator*(double scalar, const Vector& vect);
+Vector operator*(Rational scalar, const Vector& vect);
 
-Vector operator*(const Vector& vect, double scalar);
+Vector operator*(const Vector& vect, Rational scalar);
 
-bool operator!=(const Vector& left, const Vector& right);
+Vector& operator*=(Vector& vect, Rational scalar);
 
 Vector operator-(const Vector& a);
 
 Vector operator+(const Vector& a);
+
+bool operator!=(const Vector& left, const Vector& right);
