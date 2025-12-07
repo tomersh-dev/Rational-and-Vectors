@@ -20,7 +20,7 @@ private:
 	RationalArray m_data;
 };
 
-std::ostream& operator<<(std::ostream& streem, const Vector& out);
+std::ostream& operator<<(std::ostream& stream, const Vector& out);
 
 Vector& operator+=(Vector& left, const Vector& right);
 

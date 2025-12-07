@@ -38,12 +38,12 @@ Rational& Vector::operator[](int index) { return m_data[index]; };
 
 bool Vector::operator==(const Vector& other) const { return m_data == other.m_data; }
 
-std::ostream& operator<<(std::ostream& streem, const Vector& out)
+std::ostream& operator<<(std::ostream& stream, const Vector& out)
 {
 	for (int i = 0; i < out.dimension()-1; i++)
-		streem << out[i] << ' ';
-	streem << out[out.dimension()-1];
-	return streem;
+		stream << out[i] << ' ';
+	stream << out[out.dimension()-1];
+	return stream;
 }
 
 Vector& operator+=(Vector& left, const Vector& right)
@@ -70,7 +70,7 @@ Vector operator+(const Vector& left, const Vector& right)
 	auto result = Vector(maxSize);
 	for	(int i = 0; i < maxSize;i++)
 	{
-		result[i] = (i > left.dimension() ? Rational() : left[i]) + (i > right.dimension() ? Rational() : right[i]);
+		result[i] = (i >= left.dimension() ? Rational() : left[i]) + (i >= right.dimension() ? Rational() : right[i]);
 	}
 	return result;
 }
@@ -86,7 +86,7 @@ Vector operator*(const Vector& left, const Vector& right)
 	auto result = Vector(maxSize);
 	for (int i = 0; i < maxSize; i++)
 	{
-		result[i] = (i > left.dimension() ? Rational() : left[i]) * (i > right.dimension() ? Rational() : right[i]);
+		result[i] = (i >= left.dimension() ? Rational() : left[i]) * (i >= right.dimension() ? Rational() : right[i]);
 	}
 	return result;
 }

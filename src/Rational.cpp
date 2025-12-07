@@ -1,9 +1,14 @@
 #include "Rational.h"
 #include <cmath>
 
-Rational::Rational(int numerator, int denominator) {
-	m_numerator = numerator;
-	m_denominator = (denominator == 0) ? 1 : denominator ;
+Rational::Rational(int numerator, int denominator) 
+    : m_numerator(numerator), m_denominator(denominator)
+{
+    if (denominator == 0)
+    {
+        m_numerator = 0;
+        m_denominator = 1;
+    }
 	makeValid();
 }
 
@@ -104,10 +109,10 @@ bool operator!=(const Rational& left, const Rational& right)
     return !(left == right);
 }
 
-std::ostream& operator<<(std::ostream& streem, const Rational& out)
+std::ostream& operator<<(std::ostream& stream, const Rational& out)
 {
-    streem << out.numerator() << '/' << out.denominator();
-    return streem;
+    stream << out.numerator() << '/' << out.denominator();
+    return stream;
 }
 
 bool operator>(const Rational& left, const Rational& right)

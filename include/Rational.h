@@ -20,7 +20,7 @@ private:
 	int findGCD() const;
 };
 
-std::ostream& operator<<(std::ostream& streem, const Rational& out);
+std::ostream& operator<<(std::ostream& stream, const Rational& out);
 
 Rational& operator+=(Rational& left, const Rational& right);
 
