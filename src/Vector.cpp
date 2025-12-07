@@ -9,7 +9,7 @@ Vector::Vector(int size, const Rational& defaultValue)
 Vector::Vector(Rational values[], int size)
 	: m_data(values, size) { }
 
-int Vector::dimension() const { return m_data.size() }
+int Vector::dimension() const { return m_data.size(); }
 
 Rational Vector::dot(const Vector& other) const
 {
@@ -34,9 +34,9 @@ double Vector::norm() const
 
 const Rational Vector::operator[](int index) const { return m_data[index]; }
 
-Rational& Vector::operator[](int index) { return m_data[index] };
+Rational& Vector::operator[](int index) { return m_data[index]; };
 
-bool Vector::operator==(const Vector& other) { return m_data == other.m_data; }
+bool Vector::operator==(const Vector& other) const { return m_data == other.m_data; }
 
 std::ostream& operator<<(std::ostream& streem, const Vector& out)
 {
@@ -99,14 +99,14 @@ Vector operator*(double scalar, const Vector& vect)
 Vector operator*(const Vector& vect, double scalar)
 {
 	auto res = Vector(vect);
-	for (int i = 0; i < maxSize; i++)
+	for (int i = 0; i < res.dimension(); i++)
 		res[i] *= scalar;
 	return res;
 }
 
-bool operator!=(const Vector& left, const Vector& right);
+bool operator!=(const Vector& left, const Vector& right)
 {
-	return !(vect == vect);
+	return !(left == right);
 }
 
 Vector operator-(const Vector& a)

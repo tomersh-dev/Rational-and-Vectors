@@ -1,5 +1,6 @@
 #pragma once
 #include "Rational.h"
+
 class RationalArray
 {
 public:

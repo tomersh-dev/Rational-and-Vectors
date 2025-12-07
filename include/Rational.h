@@ -31,9 +31,11 @@ Rational& operator*=(Rational& left, const Rational& right);
 Rational& operator/=(Rational& left, const Rational& right);
 
 Rational operator+(const Rational& left, const Rational& right);
+
 Rational operator+(const Rational& a);
 
 Rational operator-(const Rational& left, const Rational& right);
+
 Rational operator-(const Rational& a);
 
 Rational operator*(const Rational& left, const Rational& right);

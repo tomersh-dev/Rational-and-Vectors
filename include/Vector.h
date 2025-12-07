@@ -15,10 +15,10 @@ public:
 
 	const Rational operator[](int index) const;
 	Rational& operator[](int index);
-	bool operator==(const Vector& other);
+	bool operator==(const Vector& other) const;
 private:
 	RationalArray m_data;
-}
+};
 
 
 
