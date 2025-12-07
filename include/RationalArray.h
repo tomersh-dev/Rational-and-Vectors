@@ -4,7 +4,7 @@ class RationalArray
 {
 public:
     explicit RationalArray(int size = 0, const Rational& defaultValue = Rational());
-    explicit RationalArray(Rational defaultValue[], int size = 0);
+    explicit RationalArray(Rational values[], int size = 0);
     RationalArray(const RationalArray& other);
     ~RationalArray();
 

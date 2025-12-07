@@ -51,6 +51,7 @@ RationalArray& RationalArray::operator=(const RationalArray& other)
     m_size = newArray.m_size;
 
     newArray.m_data = nullptr;
+    newArray.m_size = 0;
 
     return *this;
 }
@@ -69,12 +70,12 @@ RationalArray operator+(const RationalArray& a, const RationalArray& b)
 {
     auto newList = RationalArray(a.size() + b.size());
 
-    int nli = 0;
-    for (int i = 0; i < a.size(); i++, nli++)
-        newList[nli] = a[i];
+    int newListIndex = 0;
+    for (int i = 0; i < a.size(); i++, newListIndex++)
+        newList[newListIndex] = a[i];
 
-    for (int i = 0; i < b.size(); i++, nli++)
-        newList[nli] = b[i];
+    for (int i = 0; i < b.size(); i++, newListIndex++)
+        newList[newListIndex] = b[i];
 
     return newList;
 }
